@@ -8,6 +8,7 @@ import axios from 'axios'
 export const FETCH_SMURFS_START = "FETCH_SMURFS_START"
 export const FETCH_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS"
 export const FETCH_SMURFS_FAILURE = 'FETCH_SMURFS_FAILURE'
+
 export const ADD_SMURF = 'ADD_SMURF'
 
 
@@ -24,7 +25,7 @@ export const getSmurfs = () => dispatch => {
     })
 }
 
-export const addSmurfs = () => smurf => {
+export const addSmurf = () => smurf => {
   return {
     type: ADD_SMURF,
     id: Date.now(),
