@@ -7,7 +7,11 @@ class Smurfs extends Component {
     constructor() {
         super();
         this.state = {
-            smurfInfo: []
+            smurfInfo: {
+                name: '',
+                age: '',
+                height: ''
+            }
         }
     }
 
@@ -16,11 +20,23 @@ class Smurfs extends Component {
     }
 
     handleChanges = e => {
-        this.setState({ [e.target.name]: e.target.value })
+        
+        this.setState({ smurfInfo: {
+            ...this.state.smurfInfo,
+            [e.target.name]: e.target.value 
+        }})
+    }
+
+    newSmurf = e => {
+        console.log(this.state)
+        e.preventDefault();
+        this.props.addSmurf(this.state.smurfInfo)
+        // this.setState({ })
+    console.log("addbutton")
     }
 
   render() {
-      console.log(this.props.smurfInfo)
+    //   console.log(this.props.smurfInfo)
     return (
       <div>
           <h1>Smurfs:</h1>
@@ -31,6 +47,34 @@ class Smurfs extends Component {
                 <h3>Height: {eachSmurf.height}</h3>
             </div>
         ))}
+        <input 
+            
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={this.state.smurfInfo.name}
+            onChange={this.handleChanges}
+        />
+        <br/>
+         <input 
+            
+            type="text"
+            name="age"
+            placeholder="Age"
+            value={this.state.smurfInfo.age}
+            onChange={this.handleChanges}
+        />
+        <br/>
+         <input 
+            
+            type="text"
+            name="height"
+            placeholder="Height"
+            value={this.state.smurfInfo.height}
+            onChange={this.handleChanges}
+        />
+        <br/>
+        <button onClick={this.newSmurf}>Add Smurf</button>
       </div>
     )
   }
